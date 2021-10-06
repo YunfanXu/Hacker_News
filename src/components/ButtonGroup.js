@@ -7,7 +7,6 @@ const Span = styled.span`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 2rem;
     @media only screen and (max-width: 767px) {
         width: 2rem;
         padding: 0.5rem 1rem;

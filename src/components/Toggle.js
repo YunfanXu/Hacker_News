@@ -5,7 +5,8 @@ import { BsMoonFill, BsFillSunFill } from "react-icons/bs";
 const ToggleSpan = styled.span`
     & button {
             vertical-align: middle;
-            font-size: 2rem;
+            font-size: 18px;
+            color:${({ theme }) => theme.text};
         }
         @media only screen and (max-width: 767px) {
             font-size: 1rem;

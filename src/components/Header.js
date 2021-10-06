@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
-import styled, { ThemeContext } from "styled-components";
+import React from "react";
+import styled  from "styled-components";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import Toggle from "./Toggle"
 import ButtonGroup from "./ButtonGroup"
 
-const StyledHeader = styled.header` 
-    min-height: 7rem;
+const StyledHeader = styled.header`
+    border-top:4px solid #FE7139;
+    min-height: 5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 0.5rem 6rem;
+    padding: 1rem 4rem;
 
     @media only screen and (max-width: 767px) {
         min-height: 3rem;

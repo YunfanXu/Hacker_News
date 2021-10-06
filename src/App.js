@@ -4,9 +4,11 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import { lightTheme, darkTheme } from "./styles/Theme"
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Divider from './components/Divider';
 import browserHistory from './browserHistory';
 import { useDarkMode } from "./styles/useDarkMode"
+import HomePage from './pages/HomePage';
 
 const App = () => {
     const [theme, themeToggler] = useDarkMode();
@@ -18,11 +20,11 @@ const App = () => {
             <GlobalStyles />
             <Router history={browserHistory}>
                 <Header setMode={themeToggler}  theme={theme} />
-                {/* <Switch>
-                  <Route path="/" exact component={Home} />
-                  <Route path="/likes" exact component={Likes} />
+                <Switch>
+                  <Route path="/" exact component={HomePage} />
+                  {/* <Route path="/likes" exact component={Likes} /> */}
               </Switch>
-              <Footer /> */}
+              <Footer />
             </Router>
         </ThemeProvider>
     );
