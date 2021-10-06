@@ -1,5 +1,5 @@
 import React from "react";
-import styled  from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import Toggle from "./Toggle"
@@ -19,9 +19,9 @@ const StyledHeader = styled.header`
         padding: 0.25rem 2rem;
     }
     & button svg {
-        font-size: 2rem;
+        font-size: 1.1rem;
         @media only screen and (max-width: 767px) {
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
     }
     & button {
@@ -40,6 +40,10 @@ const StyledLink = styled(Link)`
     align-items: center;
     width: auto;
     height: 32px;
+    padding-right: 2rem;
+    @media only screen and (max-width: 767px) {
+        padding-right: 0.5rem;
+    }
   }
 
 
@@ -57,18 +61,22 @@ const StyledLink = styled(Link)`
    
 `;
 
+const GroupContainer = styled.div`
+    display:flex
+`;
 const Header = ({ setMode, theme }) => {
     const title = "Hacker News";
     return (
         <StyledHeader>
-            <StyledLink to="/">
-                <div>
-                    <Logo />
-                    <h1>{title}</h1>
-                    <ButtonGroup />
-                </div>
-            </StyledLink>
-
+            <GroupContainer>
+                <StyledLink to="/">
+                    <div>
+                        <Logo />
+                        <h1>{title}</h1>
+                    </div>
+                </StyledLink>
+                <ButtonGroup />
+            </GroupContainer>
             <div>
                 <Toggle isLight={theme === 'light'} onToggle={setMode} />
             </div>

@@ -31,6 +31,12 @@ export default (state = {}, action) => {
                 ...state,
                 err: "FETCH_NEWS_FAILURE"
             }
+        case constants.SET_STARRED:
+            return {
+                ...state,
+                starredNews: action.payload.newStarredNews,
+                newsDataList: [...action.payload.newsDataList]
+            }
         default:
             return state;
     }

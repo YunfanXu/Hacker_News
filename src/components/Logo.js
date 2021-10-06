@@ -4,14 +4,14 @@ import logo from "../assets/images/logo.jpg";
 
 const ImageSpan = styled.span`
     & img {
-        width: 33px;
+        width: 18px;
 
         @media only screen and (max-width: 600px) {
-            width: 24px;
+            width: 16px;
         }
 
         @media only screen and (max-width: 600px) {
-            width: 24px;
+            width: 16px;
         }
     }
 `;

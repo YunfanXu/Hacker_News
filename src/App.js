@@ -5,10 +5,10 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 import { lightTheme, darkTheme } from "./styles/Theme"
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Divider from './components/Divider';
 import browserHistory from './browserHistory';
 import { useDarkMode } from "./styles/useDarkMode"
 import HomePage from './pages/HomePage';
+import StarredPage from './pages/StarredPage';
 
 const App = () => {
     const [theme, themeToggler] = useDarkMode();
@@ -22,7 +22,7 @@ const App = () => {
                 <Header setMode={themeToggler}  theme={theme} />
                 <Switch>
                   <Route path="/" exact component={HomePage} />
-                  {/* <Route path="/likes" exact component={Likes} /> */}
+                  <Route path="/starred" exact component={StarredPage} />
               </Switch>
               <Footer />
             </Router>

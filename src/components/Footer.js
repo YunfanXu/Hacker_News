@@ -15,6 +15,8 @@ const StyledFooter = styled.div`
     border-top: 2px solid #FE7139;
     @media only screen and (max-width: 600px) {
         height: 60px;
+        margin-left: 2rem;
+
     }
 
     & h1{

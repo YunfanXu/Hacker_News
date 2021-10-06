@@ -6,11 +6,9 @@ import browserHistory from "../browserHistory";
 const Span = styled.span` 
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    @media only screen and (max-width: 767px) {
-        width: 2rem;
-        padding: 0.5rem 1rem;
-    }
+    align-items:center;
+    vertical-align: baseline;
+    color: ${({ theme }) => theme.text};
     & button {
         border: none;
         background-color: transparent;
@@ -38,8 +36,11 @@ const ButtonGroup = () => {
             <button onClick={() => browserHistory.push('/')}>
                 <Text>latest</Text>
             </button>
-            <div />
-            <button onClick={() => browserHistory.push('/likes')}>
+            <span>|</span>
+            <button onClick={() => {
+                console.log("browserHistory.push('/starred')")
+                browserHistory.push('/starred')
+            }}>
                 <Text>starred</Text>
             </button>
         </Span>

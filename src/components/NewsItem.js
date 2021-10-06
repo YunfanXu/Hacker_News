@@ -1,7 +1,9 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
 import * as timeago from 'timeago.js';
 import { BsStarFill, BsStar } from "react-icons/bs";
+import { setStarred } from '../state/actions';
 
 const Item = styled.li`
     background-color: ${({ theme }) => theme.color};
@@ -43,12 +45,14 @@ const Index = styled.span`
 `;
 const Text = styled.span`
     color:${({ theme }) => theme.textGray};
+    font-family: 'Open Sans', sans-serif;
     font-size: 10px;
     line-height: 1.4;
 `;
 
 const ContentContainer = styled.span`
     color:${({ theme }) => theme.textGray};
+    font-family: 'Open Sans', sans-serif;
     padding-left: 2rem;
     font-size: 10px;
 `;
@@ -64,29 +68,28 @@ const StarButton = styled.span`
     & svg {
         vertical-align: bottom;
         font-size: 10px;
-        color:${props =>  props.isLiked ? ({ theme }) => theme.orange : ({ theme }) => theme.textGray}
+        color:${props => props.isStarred ? ({ theme }) => theme.orange : ({ theme }) => theme.textGray}
 
     }
 `;
 
 const getSiteName = (url) => {
-    let domain = url.split('/')[2];
-    return domain.includes("www.") ? domain.slice(4) : domain;
+    let domain = url?.split('/')[2];
+    return (url && domain.includes("www.")) ? domain.slice(4) : domain;
 }
 
-const NewsItem = ({ newsItem, index, stories = [], likedStories = [], setLike }) => {
+const NewsItem = ({ newsItem, index, newsArray = [], starredNews = [], setLike }) => {
+    const dispatch = useDispatch();
+    const { by, kids = [], score, url, title, id, type, time, isStarred } = newsItem;
 
-    const { by, kids = [], score, url, title, id, type, time, isLiked } = newsItem;
-
-    console.log("newsItemnewsItemnewsItemnewsItem", newsItem);
     const siteName = getSiteName(url) || 'news.ycombinator.com';
-    // const link = getNewsLink({ url, id });
-    // const commentUrl = `${HN_ITEM}${id}`;
-    // const userUrl = `${HN_USER}${by}`;
+    const newsDataList = useSelector((state) => state.newsDataList);
 
-    const handleStarButton = (e) =>{
-
-        console.log("starred", e.target.value)
+    const handleStarButton = (e) => {
+        let newStarred = !isStarred;
+        dispatch(setStarred({
+            id, newsDataList, isStarred: newStarred, starredNews
+        }));
     }
     return (
         <Item>
@@ -98,7 +101,7 @@ const NewsItem = ({ newsItem, index, stories = [], likedStories = [], setLike })
                 </TitleContainer>
                 <ContentContainer>
                     {score} points by {by} {timeago.format(new Date(time * 1000).toISOString())} | {kids.length} comments |
-                    <StarButton isLiked={isLiked}><button onClick={handleStarButton} > {isLiked ? <BsStarFill /> : <BsStar />} save</button></StarButton>
+                    <StarButton isStarred={isStarred}><button onClick={handleStarButton} > {isStarred ? <BsStarFill /> : <BsStar />} save</button></StarButton>
                 </ContentContainer>
 
             </ItemContainer>

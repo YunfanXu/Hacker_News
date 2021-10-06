@@ -21,14 +21,15 @@ const getTopStoriesByPage = async (id, page) => {
 export const fetchNews = (payload = {}) => async dispatch => {
     try {
         dispatch({ type: constants.FETCH_NEWS, payload: payload });
-        const { storyIds, page } = payload;
+        const { newsIDList, page } = payload;
 
-        return getTopStoriesByPage(storyIds, page)
+        console.log("newsIDList",newsIDList)
+        return getTopStoriesByPage(newsIDList, page)
             .then(stories => {
                 stories.forEach((story) => {
-                    story.isLiked = false;
+                    story.isStarred = false;
                 });
-                console.log("dispatch:",stories)
+                console.log("dispatch:", stories)
                 dispatch({ type: constants.FETCH_NEWS_SUCCESS, payload: stories });
             })
 
@@ -42,12 +43,28 @@ export const fetchNewsIdList = (payload = {}) => async dispatch => {
     try {
         dispatch({ type: constants.FETCH_NEWS_ID_LIST, payload: payload });
         const response = await api.get(`/topstories${URL_POSTFIX}`);
-        const storyIds = response.data;
-        dispatch({ type: constants.FETCH_NEWS_ID_LIST_SUCCESS, payload: storyIds });
-        dispatch(fetchNews({ storyIds, page: 0 }));
-        return storyIds;
+        const newsIDList = response.data;
+        dispatch({ type: constants.FETCH_NEWS_ID_LIST_SUCCESS, payload: newsIDList });
+        dispatch(fetchNews({ newsIDList, page: 0 }));
+        return newsIDList;
 
     } catch (error) {
         dispatch({ type: constants.FETCH_NEWS_ID_LIST_FAILURE, payload: error })
+    }
+}
+
+export const setStarred = (payload = {}) => {
+    const { id, newsDataList, isStarred, starredNews } = payload;
+    newsDataList.forEach(item => {
+        if(item.id === id){
+            item.isStarred = isStarred;
+            return item;
+        }
+    })
+
+    let newStarredNews = newsDataList.filter(item => item.isStarred);
+    return {
+        type: constants.SET_STARRED,
+        payload: { newsDataList, newStarredNews }
     }
 }

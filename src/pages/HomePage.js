@@ -25,12 +25,12 @@ const Button = styled.button`
     margin-left:6rem;
     border:none;
 `;
-const HomePage = ({ fetchNewsIdList, fetchNews, isFetching, newsDataList,newsIDList, page }) => {
-
+const HomePage = ({ fetchNewsIdList, fetchNews, isFetching, newsDataList, newsIDList, page }) => {
 
     const fetchStory = () => {
         if (!isFetching) {
-            fetchNews({ newsDataList, page });
+            console.log("fetchStory", page)
+            fetchNews({ newsIDList, page });
         }
     }
 

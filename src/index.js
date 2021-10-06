@@ -20,9 +20,7 @@ const store = createStore(
 )
 
 store.subscribe(function() {
-  // retrieve latest store state here
-  // Ex:
-  console.log("=====store:",store.getState());
+  // console.log("=====store:",store.getState());
 })
 
 ReactDOM.render(

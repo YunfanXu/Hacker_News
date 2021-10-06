@@ -6,7 +6,7 @@ const NewsContainer = styled.ul`
     padding: 0.5rem 4rem;
     display: flex;
     flex-direction: column;
-
+    font-family: 'Ubuntu Mono', monospace;
     @media only screen and (max-width: 500px) {
         padding: 0.5rem 1rem;
     }
