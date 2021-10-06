@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import browserHistory from "../browserHistory";
+import { useLocation } from 'react-router-dom'
 
 
 const Span = styled.span` 
@@ -24,23 +25,24 @@ const Span = styled.span`
 `;
 
 const Text = styled.span`
-    color: ${({ theme }) => theme.text};
-    &:hover {
-        font-weight: 900;
-    }
+    font-size: 14px;
+    color: ${props => props.isActived ? ({ theme }) => theme.orange : ({ theme }) => theme.text};
+    font-weight: ${props => props.isActived ? 'bold' : 300};
 `;
 
 const ButtonGroup = () => {
+    const location = useLocation();
+
     return (
         <Span>
             <button onClick={() => browserHistory.push('/')}>
-                <Text>latest</Text>
+                <Text isActived={location.pathname === '/'}>latest</Text>
             </button>
             <span>|</span>
             <button onClick={() => {
                 browserHistory.push('/starred')
             }}>
-                <Text>starred</Text>
+                <Text isActived={location.pathname === '/starred'} >starred</Text>
             </button>
         </Span>
     );
