@@ -23,13 +23,13 @@ export const fetchNews = (payload = {}) => async dispatch => {
         dispatch({ type: constants.FETCH_NEWS, payload: payload });
         const { newsIDList, page } = payload;
 
-        console.log("newsIDList",newsIDList)
+        // console.log("newsIDList",newsIDList)
         return getTopStoriesByPage(newsIDList, page)
             .then(stories => {
                 stories.forEach((story) => {
                     story.isStarred = false;
                 });
-                console.log("dispatch:", stories)
+                // console.log("dispatch:", stories)
                 dispatch({ type: constants.FETCH_NEWS_SUCCESS, payload: stories });
             })
 
@@ -54,7 +54,7 @@ export const fetchNewsIdList = (payload = {}) => async dispatch => {
 }
 
 export const setStarred = (payload = {}) => {
-    const { id, newsDataList, isStarred, starredNews } = payload;
+    const { id, newsDataList, isStarred } = payload;
     newsDataList.forEach(item => {
         if(item.id === id){
             item.isStarred = isStarred;

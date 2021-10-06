@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { ThemeContext } from "styled-components";
+import styled from "styled-components";
 import browserHistory from "../browserHistory";
 
 
@@ -38,7 +38,6 @@ const ButtonGroup = () => {
             </button>
             <span>|</span>
             <button onClick={() => {
-                console.log("browserHistory.push('/starred')")
                 browserHistory.push('/starred')
             }}>
                 <Text>starred</Text>

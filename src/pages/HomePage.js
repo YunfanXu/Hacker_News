@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useSelector, useDispatch } from "react-redux";
 import { connect } from 'react-redux';
 import { fetchNewsIdList, fetchNews } from "../state/actions";
 import NewsList from "../components/NewsList";
@@ -24,18 +23,20 @@ const Button = styled.button`
     font-size:14px;
     margin-left:6rem;
     border:none;
+    @media only screen and (max-width: 600px) {
+        margin-left:3rem;
+    }
 `;
 const HomePage = ({ fetchNewsIdList, fetchNews, isFetching, newsDataList, newsIDList, page }) => {
 
     const fetchStory = () => {
         if (!isFetching) {
-            console.log("fetchStory", page)
             fetchNews({ newsIDList, page });
         }
     }
 
     useEffect(() => {
-        if (newsDataList.length === 0) {
+        if ( newsDataList.length === 0) {
             fetchNewsIdList();
         }
     }, []);

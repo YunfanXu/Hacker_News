@@ -8,15 +8,13 @@ const StyledFooter = styled.div`
     align-item:center;
     justify-contents:center;
     margin-top:2rem;
-    margin-left: 4rem;
+    margin-left: 5%;
     box-sizing: border-box;
-    width: 85%;
+    width: 90%;
     height: 110px;
     border-top: 2px solid #FE7139;
     @media only screen and (max-width: 600px) {
-        height: 60px;
-        margin-left: 2rem;
-
+        height: 80px;
     }
 
     & h1{

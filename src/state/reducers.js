@@ -1,6 +1,6 @@
 import constants from "./constants";
 
-export default (state = {}, action) => {
+const reducers = (state = {}, action) => {
     switch (action.type) {
         case constants.FETCH_NEWS_ID_LIST:
         case constants.FETCH_NEWS_ID_LIST_SUCCESS:
@@ -41,3 +41,5 @@ export default (state = {}, action) => {
             return state;
     }
 }
+
+export default reducers;

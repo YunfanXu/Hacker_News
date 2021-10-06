@@ -12,7 +12,7 @@ const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 1rem 4rem;
+    padding: 0.5rem 4rem;
 
     @media only screen and (max-width: 767px) {
         min-height: 3rem;

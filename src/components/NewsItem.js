@@ -80,7 +80,7 @@ const getSiteName = (url) => {
 
 const NewsItem = ({ newsItem, index, newsArray = [], starredNews = [], setLike }) => {
     const dispatch = useDispatch();
-    const { by, kids = [], score, url, title, id, type, time, isStarred } = newsItem;
+    const { by, kids = [], score, url, title, id, time, isStarred } = newsItem;
 
     const siteName = getSiteName(url) || 'news.ycombinator.com';
     const newsDataList = useSelector((state) => state.newsDataList);
