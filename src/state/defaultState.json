@@ -1,0 +1,8 @@
+{
+        "isFetching": false,
+        "newsDataList": [],
+        "newsIDList":[],
+        "starredNews":[],
+        "page": 0,
+        "err": ""
+}

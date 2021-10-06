@@ -1,58 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { useState } from 'react';
+import { Router, Route, Switch } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "./styles/GlobalStyles";
+import { lightTheme, darkTheme } from "./styles/Theme"
+import Header from './components/Header';
+import Footer from './components/Footer';
+import browserHistory from './browserHistory';
+import { useDarkMode } from "./styles/useDarkMode"
+import HomePage from './pages/HomePage';
+import StarredPage from './pages/StarredPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [theme, themeToggler] = useDarkMode();
+
+    const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
+    return (
+        <ThemeProvider theme={themeMode}>
+            <GlobalStyles />
+            <Router history={browserHistory}>
+                <Header setMode={themeToggler}  theme={theme} />
+                <Switch>
+                  <Route path="/" exact component={HomePage} />
+                  <Route path="/starred" exact component={StarredPage} />
+              </Switch>
+              <Footer />
+            </Router>
+        </ThemeProvider>
+    );
+};
 
 export default App;
