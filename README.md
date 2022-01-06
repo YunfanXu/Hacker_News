@@ -1,4 +1,4 @@
-# Front-end React + Redux - Hacker News Redesign
+# Hacker News Redesign - React + Redux
 Simple project and finished within 20h.
 
 
