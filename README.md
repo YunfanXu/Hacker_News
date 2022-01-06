@@ -1,6 +1,14 @@
-# Front-end React - Hacker News Redesign
-## Completed tasks
+# Front-end React + Redux - Hacker News Redesign
+Simple project and finished within 20h.
 
+
+## Preview
+### Mobile Version
+![mobile](./demo/demo_mobile.gif)
+
+### PC Version
+![pc](./demo/demo_pc.gif)
+## Completed tasks
 
 - Implemented the design according to the attached mockup 
 - Developed thie project by using React and Redux 

@@ -39,7 +39,7 @@ const HomePage = ({ fetchNewsIdList, fetchNews, isFetching, newsDataList, newsID
         if ( newsDataList.length === 0) {
             fetchNewsIdList();
         }
-    }, []);
+    }, [newsDataList.length, fetchNewsIdList]);
 
     return (
         <main>
